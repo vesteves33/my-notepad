@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-notepad-app
+  namespace: my-notepad
+  labels:
+    app: my-notepad
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-notepad
+  template:
+    metadata:
+      labels:
+        app: my-notepad
+    spec:
+      containers:
+        - name: my-notepad-app
+          image: vesteves33/my-notepad
+          resources:
+            limits:
+              cpu: "1"
+              memory: "512Mi"
+            requests:
+              cpu: "0.5"
+              memory: "128Mi"
+          ports:
+            - name: my-notepad
+              containerPort: 5000
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              port: 5000
+              scheme: HTTP
+            periodSeconds: 5
+            successThreshold: 1
+            initialDelaySeconds: 15
+            timeoutSeconds: 5
