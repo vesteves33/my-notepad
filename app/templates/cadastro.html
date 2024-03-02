@@ -1,0 +1,33 @@
+{% extends 'template.html' %}
+
+{% block header %}
+  {% block title %} <title>Cadastro</title> {% endblock %}
+{% endblock %}
+  
+{% block content %}
+  <div class="container bg-white border border-dark-subtle mt-5 p-5 rounded">
+    <h1>Cadastro</h1>
+
+    <form class="row">
+      <div class="col-md-6 mb-3">
+        <label for="name" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="name" placeholder="Melhor Nome">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="sobrenome" class="form-label">Sobrenome</label>
+        <input type="text" class="form-control" id="sobrenome" placeholder="Sobrenome">
+      </div>
+      <div class="col-12 mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com">
+      </div>
+      <div class="col-12 mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="*****">
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary mb-3">Enviar</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

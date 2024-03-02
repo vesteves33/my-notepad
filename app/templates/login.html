@@ -1,0 +1,31 @@
+{% extends 'template.html' %}
+
+{% block header %}
+  {% block title %} <title>Login</title> {% endblock %}
+{% endblock %}
+  
+{% block content %}
+  <div class="container bg-white border border-dark-subtle mt-5 p-5 rounded">
+    <h1>Login</h1>
+
+    <form class="row g-3">
+      <div class="col-12 mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com">
+      </div>
+      <div class="col-12 mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="name@example.com">
+      </div>
+      <div class="form-check col-12 mb-3">
+        <input class="form-check-input" type="checkbox" id="autoSizingCheck">
+        <label class="form-check-label" for="autoSizingCheck">
+            Manter me conectado
+        </label>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary mb-3">Enviar</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

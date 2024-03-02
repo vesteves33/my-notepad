@@ -1,7 +1,11 @@
 from flask_restful import Resource
 from flask import make_response, render_template
 
-class Register(Resource):
+class Login(Resource):
   def get(self):
     headers = {"Content-Type": "text/html"}
-    return make_response(render_template("register.html"), 200, headers)
+    return make_response(render_template("login.html"), 200, headers)
+  
+  def post(self):
+    pass
+
