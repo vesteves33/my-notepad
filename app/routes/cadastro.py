@@ -1,6 +1,7 @@
 from flask_restful import Resource, reqparse
-from flask import make_response, render_template
+from flask import make_response, render_template, redirect, flash, url_for
 from app.models.user import User
+from app import bcrypt
 
 #Recuperando valores do formulario
 data = reqparse.RequestParser()
@@ -15,14 +16,17 @@ class Cadastro(Resource):
   
   def post(self):
     args = data.parse_args()
+    senha = bcrypt.generate_password_hash(args["senha"], 12)
     
     try:
       cadastro = User(nome=args['nome'], 
                       sobrenome=args['sobrenome'], 
                       email=args['email'],
-                      senha=args['senha'])
+                      senha=senha)
       cadastro.save()
-      return f"Usuario criado com sucesso! {cadastro}", 201
+      
+      flash(f"Usuario {cadastro} criado com sucesso!", "alert-success")
+      return redirect(url_for('cadastro'))
     
     except Exception as e:
       return f"Error: {e}",401

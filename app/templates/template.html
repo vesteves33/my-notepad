@@ -13,19 +13,40 @@
     <nav class="navbar">
       <a class="navbar-brand" href="{{ url_for('home')}}">My Notepad</a>
       
-      <ul class="nav justify-content-end">
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('home')}}">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('cadastro')}}">Cadastro</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('login')}}">Login</a>
-        </li>
-      </ul>
+      {{% if current_user.is_authenticated%}}
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('nota')}}">Criar Nota</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('perfil')}}">Perfil</a>
+          </li>
+        </ul>
+      
+      {{% else %}}
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('home')}}">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('cadastro')}}">Cadastro</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('login')}}">Login</a>
+          </li>
+        </ul>
+      {{% endif %}}
     </nav>
   </header>
+    {% with mensagens = get_flashed_messages(with_categories=True) %}
+          {% if mensagens %}
+              {% for categoria, mensagem in mensagens %}
+                  <div class="container mt-3 alert {{ categoria }}">
+                      {{ mensagem }}
+                  </div>
+              {% endfor %}
+          {% endif %}        
+      {% endwith %}
   
   
     {% block content %}
