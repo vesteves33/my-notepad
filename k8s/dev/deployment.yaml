@@ -6,7 +6,7 @@ metadata:
   labels:
     app: my-notepad
 spec:
-  replicas: 3
+  replicas: 6
   selector:
     matchLabels:
       app: my-notepad
