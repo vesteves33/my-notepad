@@ -27,7 +27,7 @@ spec:
               memory: "128Mi"
           ports:
             - name: my-notepad
-              containerPort: 8080
+              containerPort: 5000
               protocol: TCP
           readinessProbe:
             failureThreshold: 3
