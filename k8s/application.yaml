@@ -7,4 +7,16 @@ spec:
   project: default
 
   source:
-    repoURL: 
+    repoURL: https://github.com/vesteves33/my-notepad.git
+    path: k8s/dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: my-notepad
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    
+    automated:
+      selfHeal: true
+      prune: true
