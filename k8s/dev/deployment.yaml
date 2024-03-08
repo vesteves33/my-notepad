@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-notepad-app
+  name: my-notepad
   namespace: my-notepad
   labels:
     app: my-notepad
