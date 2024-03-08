@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: my-notepad-app
-          image: vesteves33/my-notepad
+          image: vesteves33/my-notepad:1.2.1
           resources:
             limits:
               cpu: "1"

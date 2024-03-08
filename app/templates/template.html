@@ -13,7 +13,7 @@
     <nav class="navbar">
       <a class="navbar-brand" href="{{ url_for('home')}}">My Notepad</a>
       
-      {{% if current_user.is_authenticated%}}
+      {% if current_user.is_authenticated %}
         <ul class="nav justify-content-end">
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('nota')}}">Criar Nota</a>
@@ -23,7 +23,7 @@
           </li>
         </ul>
       
-      {{% else %}}
+      {% else %}
         <ul class="nav justify-content-end">
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('home')}}">Inicio</a>
@@ -35,7 +35,7 @@
             <a class="nav-link" href="{{ url_for('login')}}">Login</a>
           </li>
         </ul>
-      {{% endif %}}
+      {% endif %}
     </nav>
   </header>
     {% with mensagens = get_flashed_messages(with_categories=True) %}
